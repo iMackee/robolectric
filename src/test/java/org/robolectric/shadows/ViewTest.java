@@ -70,7 +70,7 @@ public class ViewTest {
 
     @Test
     public void measuredDimensions() throws Exception {
-        View view1 = new View(null) {
+        View view1 = new View(Robolectric.application) {
             {
                 setMeasuredDimension(123, 456);
             }
@@ -81,7 +81,7 @@ public class ViewTest {
 
     @Test
     public void layout_shouldCallOnLayoutOnlyIfChanged() throws Exception {
-        View view1 = new View(null) {
+        View view1 = new View(Robolectric.application) {
             @Override
             protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
                 transcript.add("onLayout " + changed + " " + left + " " + top + " " + right + " " + bottom);
@@ -277,7 +277,7 @@ public class ViewTest {
 
     @Test
     public void shouldSupportAllConstructors() throws Exception {
-        new View(null);
+        new View(Robolectric.application);
         new View(null, null);
         new View(null, null, 0);
     }
@@ -402,7 +402,7 @@ public class ViewTest {
 
     @Test
     public void dispatchTouchEvent_sendsMotionEventToOnTouchEvent() throws Exception {
-        TouchableView touchableView = new TouchableView(null);
+        TouchableView touchableView = new TouchableView(Robolectric.application);
         MotionEvent event = MotionEvent.obtain(0L, 0L, MotionEvent.ACTION_DOWN, 12f, 34f, 0);
         touchableView.dispatchTouchEvent(event);
         assertThat(touchableView.event).isSameAs(event);

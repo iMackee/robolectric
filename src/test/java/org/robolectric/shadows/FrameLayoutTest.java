@@ -6,6 +6,7 @@ import android.widget.FrameLayout;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.robolectric.Robolectric;
 import org.robolectric.TestRunners;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -21,7 +22,7 @@ public class FrameLayoutTest {
 
     @Before
     public void setUp() throws Exception {
-        frameLayout = new FrameLayout(null);
+        frameLayout = new FrameLayout(Robolectric.application);
     }
 
     @Test
